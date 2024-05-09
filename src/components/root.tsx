@@ -7,76 +7,16 @@ import { memo, PropsWithChildren } from 'react';
 const baseUrl = "https://goodnewscooperativesociety.online"
 
 const RootLayout: NextPage<PropsWithChildren<SeoMetaData>> = memo(({ children, title, description }) => {
-    const router = useRouter();
     const { asPath: pathname } = useRouter();
     return (
         <>
             <Head>
-                <NextSeo
-                    title={title}
-                    themeColor={'#14411a'}
-                    noindex={false}
-                    nofollow={false}
-                    robotsProps={undefined}
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+<meta name="keywords" content="GoodNews, Cooperative, Thrift, Credit, Society, financial services, savings, loans, financial education, secure future" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="canonical" href={`${baseUrl}${pathname}`} />
 
-                    description={description}
-                    canonical={`${baseUrl}${pathname}`}
-                    openGraph={{
-                        type: 'website',
-                        title: `${title}`,
-                        description: `${description}`,
-                        images: [
-                            {
-                                url: 'https://example.com/og-image-01.jpg',
-                                width: 800,
-                                height: 600,
-                                alt: 'Og Image Alt',
-                            },
-                            {
-                                url: 'https://example.com/og-image-02.jpg',
-                                width: 900,
-                                height: 800,
-                                alt: 'Og Image Alt Second',
-                            },
-                        ],
-                    }} twitter={{
 
-                    }} additionalMetaTags={[
-                        {
-                            name: 'icon',
-                            content: '/favicon.ico'
-                        },
-                        {
-                            name: 'manifest',
-                            content: '/site.webmanifest',
-                        },
-                        {
-                            name: 'apple-touch-icon',
-                            content: '/apple-touch-icon.png'
-                        }
-                    ]}
-                    titleTemplate="GoodNews %s - Cooperative Thrift & Credit Society"
-                    defaultTitle={'GoodNews - Cooperative Thrift & Credit Society'}
-                    additionalLinkTags={[
-                        {
-                            rel: 'manifest',
-                            href: '/site.webmanifest',
-                          },
-                          {
-                            rel: 'icon',
-                            sizes: '16x16',
-                            href: '/favicon-16x16.png',
-                          },{
-                            rel: 'icon',
-                            sizes: '32x32',
-                            href: '/favicon-32x32.png',
-                          },{
-                            rel: 'icon',
-                            sizes: '32x32',
-                            href: '/favicon-32x32.png',
-                          },
-                    ]}
-                />
             </Head>
             <main>
                 {children}
