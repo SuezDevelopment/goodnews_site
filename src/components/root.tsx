@@ -11,12 +11,10 @@ const RootLayout: NextPage<PropsWithChildren<SeoMetaData>> = memo(({ children, t
     return (
         <>
             <Head>
-<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
-<meta name="keywords" content="GoodNews, Cooperative, Thrift, Credit, Society, financial services, savings, loans, financial education, secure future" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link rel="canonical" href={`${baseUrl}${pathname}`} />
-
-
+                <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+                <meta name="keywords" content="GoodNews, Cooperative, Thrift, Credit, Society, financial services, savings, loans, financial education, secure future" />
+                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                <link rel="canonical" href={`${baseUrl}${pathname}`} />
             </Head>
             <main>
                 {children}
