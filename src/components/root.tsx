@@ -4,24 +4,72 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { memo, PropsWithChildren } from 'react';
 
-const baseUrl = "https://goodnewscooperativesociety.online"
+const baseUrl = "https://goodnewscooperativesociety.online";
 
-const RootLayout: NextPage<PropsWithChildren<SeoMetaData>> = memo(({ children, title, description }) => {
-    const { asPath: pathname } = useRouter();
-    return (
-        <div>
-            <Head>
-            <title>{title}</title>
-                <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
-                <meta name="keywords" content="GoodNews, Cooperative, Thrift, Credit, Society, financial services, savings, loans, financial education, secure future" />
-                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-                <link rel="canonical" href={`${baseUrl}${pathname}`} />
-            </Head>
-            <main>
-                {children}
-            </main>
-        </div>
-    )
+interface SeoMetaData {
+  title: string;
+  description: string;
+  keywords?: string;
+  ogImage?: string;
+}
+
+const RootLayout: NextPage<PropsWithChildren<SeoMetaData>> = memo(({ 
+  children, 
+  title, 
+  description,
+  keywords = "GoodNews, Cooperative, Thrift, Credit, Society, financial services, savings, loans, financial education, secure future",
+  ogImage = `${baseUrl}/og-image.jpg`
+}) => {
+  const { asPath: pathname } = useRouter();
+  const fullUrl = `${baseUrl}${pathname}`;
+
+  return (
+    <>
+      <NextSeo
+        title={title}
+        description={description}
+        canonical={fullUrl}
+        openGraph={{
+          url: fullUrl,
+          title,
+          description,
+          images: [{ url: ogImage }],
+          site_name: 'GoodNews Cooperative Society',
+        }}
+        twitter={{
+          handle: '@goodnewscoop',
+          site: '@goodnewscoop',
+          cardType: 'summary_large_image',
+        }}
+      />
+      <Head>
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="keywords" content={keywords} />
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="manifest" href="/site.webmanifest" />
+        <meta name="theme-color" content="#56ab2f" />
+      </Head>
+      <main lang="en">
+        {children}
+      </main>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{
+        __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "name": "GoodNews Cooperative Society",
+          "url": baseUrl,
+          "logo": `${baseUrl}/goodnews-logo.png`,
+          "sameAs": [
+            "https://www.facebook.com/goodnewscoop",
+            "https://twitter.com/goodnewscoop",
+            "https://www.linkedin.com/company/goodnewscoop"
+          ]
+        })
+      }} />
+    </>
+  )
 });
 
 RootLayout.displayName = 'RootLayout';

@@ -5,7 +5,7 @@ export default function LandingPage() {
   const { title, description } = seoMetaData;
   return (
     <RootLayout title={title} description={description}>
-       <HeroSection />
+      <HeroSection />
     </RootLayout>
   );
 }
