@@ -16,7 +16,7 @@ interface SeoMetaData {
 const RootLayout: NextPage<PropsWithChildren<SeoMetaData>> = memo(({ 
   children, 
   title, 
-  description,
+  description = "GoodNews Cooperative Society empowers members with affordable financial services, tailored savings plans, accessible loans, and comprehensive financial education. Join us to build a secure and prosperous future through community-driven cooperative banking.",
   keywords = "GoodNews, Cooperative, Thrift, Credit, Society, financial services, savings, loans, financial education, secure future",
   ogImage = `${baseUrl}/og-image.jpg`
 }) => {
