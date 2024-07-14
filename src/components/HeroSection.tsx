@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion';
 import styles from '../styles/HeroSection.module.css';
 import Image from 'next/image';
+import { openInNewTab } from '@/lib/utils';
+
 const HeroSection = () => {
   return (
     <section className={styles.heroSection}>
@@ -37,6 +39,7 @@ const HeroSection = () => {
         className={styles.ctaButton}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
+        onClick={() => openInNewTab('https://forms.gle/q6zHW31AGZ51S4x8A')}
       >
         Join Now
       </motion.button>
